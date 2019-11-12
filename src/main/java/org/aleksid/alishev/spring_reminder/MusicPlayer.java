@@ -1,6 +1,8 @@
 package org.aleksid.alishev.spring_reminder;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -9,7 +11,9 @@ import java.util.List;
 @Component
 public class MusicPlayer {
     private List<Music> playList;
+    @Value("${musicPlayer.name}")
     private String name;
+    @Value("${musicPlayer.volume}")
     private int volume;
 
     public void play(){
@@ -18,6 +22,7 @@ public class MusicPlayer {
         }
     }
 
+    @Autowired
     public MusicPlayer(Music ... playList) {
         this.playList = Arrays.asList(playList);
     }
